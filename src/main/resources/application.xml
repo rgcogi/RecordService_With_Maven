@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+        
+    <!--  This configuration is using Mock implementations of the services so we can 
+          concentrate on the front end for this course.  -->    
+        
+    <!--  Service Beans -->    
+    <bean id="scoreService"       
+                class="com.cogi.solution.services.ScoreServiceMockImpl">
+    </bean>           
+   <bean id="authenticationService"       
+                class="com.cogi.solution.services.AuthenticationImpl">
+    </bean>
+    <bean id="studentService"
+    			class="com.cogi.solution.services.StudentManagementServiceImpl">    
+    </bean>
+    <bean id="subjectService"
+    			class="com.cogi.solution.services.SubjectManagementServiceImpl">    
+    </bean>
+    
+    
+    <!-- DAO Beans -->
+    <bean id="authenticationDao"
+    		class="com.cogi.solution.data.AuthenticationDAO">    
+    </bean>
+    <bean id="newStudentDAO"
+    		class="com.cogi.solution.data.NewStudentDAOImpl">    
+    </bean>
+    <bean id="subjectDAO"
+    		class="com.cogi.solution.data.SubjectDAOImpl">    
+    </bean>
+    <context:component-scan base-package="com.cogi.solution" />
+                 
+    	<!--  
+	
+	<bean id="performanceAdvice" class="com.cogi.solution.advice.PerformanceTimingAdvice"/>
+	
+	<aop:config>
+	
+		<aop:aspect ref="performanceAdvice">
+			<aop:around method="recordTiming"
+						pointcut="execution ( * com.cogi.solution.services..*.* (..) ) 
+						       || execution ( * com.cogi.solution.data..*.* (..) )"/>
+		</aop:aspect>
+	
+	</aop:config>
+	     AOP Weaving -->
+</beans>

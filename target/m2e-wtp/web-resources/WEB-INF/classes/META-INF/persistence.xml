@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+             
+   <!-- This file is for the chapter on JPA, please leave it until then -->
+             
+   <persistence-unit name="myRecordDBConfig" 
+                     transaction-type="RESOURCE_LOCAL">
+      <mapping-file>META-INF/queries.xml</mapping-file>  
+      <properties>         
+	     <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+         <property name="hibernate.connection.url" value="jdbc:mysql://localhost/RecordServiceDB?"/>
+		 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/> 
+         <!-- we do not need user name and password for the course-->
+         <property name="hibernate.connection.username" value="app"/>
+         <property name="hibernate.connection.password" value="rSwhtg4d"/>
+       
+         
+         <!--  tweak these to your own needs -->
+         <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.format_sql" value="true" />
+         <property name="hibernate.hbm2ddl.auto" value="update" /> 
+         
+           <!--  connection pool -->
+       
+         <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
+         <property name="hibernate.c3p0.acquire_increment" value="1"/> 
+		 <property name="hibernate.c3p0.idle_test_period" value="100"/> 
+		 <property name="hibernate.c3p0.max_size" value="100"/> 
+	     <property name="hibernate.c3p0.max_statements" value="0"/> 
+		 <property name="hibernate.c3p0.min_size" value="5"/> 
+		 <property name="hibernate.c3p0.timeout" value="1800"/>
+		
+         
+                          
+      </properties>    
+      
+     
+    
+                                              
+   </persistence-unit>             
+</persistence>
+            
